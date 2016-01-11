@@ -9,4 +9,4 @@
 ## text datafiles
 *.txt
 ## except example input
-\!mag_out.txt
+!mag_out.txt
