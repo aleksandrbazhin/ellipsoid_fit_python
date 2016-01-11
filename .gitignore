@@ -1,0 +1,12 @@
+## Compiled
+*.o
+*.so
+*.pyc
+
+## Dropbox generated
+*~
+
+## text datafiles
+*.txt
+## except example input
+\!mag_out.txt
