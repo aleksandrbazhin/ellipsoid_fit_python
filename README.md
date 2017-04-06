@@ -1,4 +1,4 @@
-# elipsoid_fit_python
+# Ellipsoid fit python
 Find ellipsoid fit for arbitrary data with python/numpy, plot it or write to file.
 
 Used for 3-axis magnitometer calibration.
