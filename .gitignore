@@ -1,7 +1,8 @@
 ## Compiled
 *.o
 *.so
-*.pyc
+__pycache__/
+*.py[cod]
 
 ## Dropbox generated
 *~
@@ -10,3 +11,5 @@
 *.txt
 ## except example input
 !mag_out.txt
+
+.idea/
