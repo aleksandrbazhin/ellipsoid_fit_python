@@ -2,6 +2,8 @@
 Find ellipsoid fit for arbitrary data with python/numpy, plot it or write to file.
 (Should work on both python 2.7 and python 3)
 
+![alt text](https://drive.google.com/file/d/1RGHXoyNfTBC3yQv_GLT09_tUyl_vhhao/view?usp=sharing)
+
 Used for 3-axis magnetometer calibration.
 
 Project is a port of matlab/octave http://www.mathworks.com/matlabcentral/fileexchange/24693-ellipsoid-fit to python/numpy
