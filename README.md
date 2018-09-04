@@ -2,7 +2,7 @@
 Find ellipsoid fit for arbitrary data with python/numpy, plot it or write to file.
 (Should work on both python 2.7 and python 3)
 
-![alt text](https://drive.google.com/file/d/1RGHXoyNfTBC3yQv_GLT09_tUyl_vhhao/view?usp=sharing)
+![alt text](https://lh3.googleusercontent.com/96UGFkW4MD74Bw8d-NNbn4tRRd0YYL4x40sfF6kl0p4jirhN7R8FHapXMPUXh1b5gpVmjI7o1dYRMojyWD1i=w1920-h958)
 
 Used for 3-axis magnetometer calibration.
 
