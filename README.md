@@ -20,3 +20,6 @@ three rows are ellipsoid axes.
 Requirements are:
 - numpy
 - matplotlib for plotting
+
+Update: for close version to Matlab look here 
+https://github.com/marksemple/pyEllipsoid_Fit
