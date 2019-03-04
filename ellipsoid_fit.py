@@ -2,7 +2,7 @@ import numpy as np
 import math 
 
 
-def data_regularize(data, type="spheric", divs=10):
+def data_regularize(data, type="spherical", divs=10):
     limits = np.array([
         [min(data[:, 0]), max(data[:, 0])],
         [min(data[:, 1]), max(data[:, 1])],
@@ -10,7 +10,7 @@ def data_regularize(data, type="spheric", divs=10):
         
     regularized = []
 
-    if type == "cubic":
+    if type == "cubic": # take mean from points in the cube
         
         X = np.linspace(*limits[0], num=divs)
         Y = np.linspace(*limits[1], num=divs)
@@ -28,7 +28,7 @@ def data_regularize(data, type="spheric", divs=10):
                     if len(points_in_sector) > 0:
                         regularized.append(np.mean(np.array(points_in_sector), axis=0))
 
-    elif type == "spheric":
+    elif type == "spherical": #take mean from points in the sector
         divs_u = divs 
         divs_v = divs * 2
 
@@ -71,7 +71,7 @@ def data_regularize(data, type="spheric", divs=10):
 
 
 # https://github.com/minillinim/ellipsoid
-def ellipsoid_plot(center, radii, rotation, ax, plotAxes=False, cageColor='b', cageAlpha=0.2):
+def ellipsoid_plot(center, radii, rotation, ax, plot_axes=False, cage_color='b', cage_alpha=0.2):
     """Plot an ellipsoid"""
         
     u = np.linspace(0.0, 2.0 * np.pi, 100)
@@ -86,7 +86,7 @@ def ellipsoid_plot(center, radii, rotation, ax, plotAxes=False, cageColor='b', c
         for j in range(len(x)):
             [x[i, j], y[i, j], z[i, j]] = np.dot([x[i, j], y[i, j], z[i, j]], rotation) + center
 
-    if plotAxes:
+    if plot_axes:
         # make some purdy axes
         axes = np.array([[radii[0],0.0,0.0],
                          [0.0,radii[1],0.0],
@@ -100,10 +100,10 @@ def ellipsoid_plot(center, radii, rotation, ax, plotAxes=False, cageColor='b', c
             X3 = np.linspace(-p[0], p[0], 100) + center[0]
             Y3 = np.linspace(-p[1], p[1], 100) + center[1]
             Z3 = np.linspace(-p[2], p[2], 100) + center[2]
-            ax.plot(X3, Y3, Z3, color=cageColor)
+            ax.plot(X3, Y3, Z3, color=cage_color)
 
     # plot ellipsoid
-    ax.plot_wireframe(x, y, z,  rstride=4, cstride=4, color=cageColor, alpha=cageAlpha)
+    ax.plot_wireframe(x, y, z,  rstride=4, cstride=4, color=cage_color, alpha=cage_alpha)
 
 
 # http://www.mathworks.com/matlabcentral/fileexchange/24693-ellipsoid-fit

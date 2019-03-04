@@ -11,8 +11,8 @@ if __name__=='__main__':
 
     center, radii, evecs, v = ellipsoid_fit(data2)
 
-    dataC = data - center.T
-    dataC2 = data2 - center.T
+    data_centered = data - center.T
+    data_centered_regularized = data2 - center.T
 
     a, b, c = radii
     r = (a * b * c) ** (1. / 3.) #preserve volume?
@@ -20,12 +20,11 @@ if __name__=='__main__':
     #http://www.cs.brandeis.edu/~cs155/Lecture_07_6.pdf
     #affine transformation from ellipsoid to sphere (translation excluded)
     TR = evecs.dot(D).dot(evecs.T)
-    dataE = TR.dot(dataC2.T).T
+    data_on_sphere = TR.dot(data_centered_regularized.T).T
 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     
-
     #hack  for equal axes
     ax.set_aspect('equal')
     MAX = 200
@@ -33,12 +32,14 @@ if __name__=='__main__':
         for point in np.diag(direction * MAX * np.array([1, 1, 1])):
             ax.plot([point[0]], [point[1]], [point[2]], 'w')
             
-    #ax.scatter(dataC[:,0], dataC[:,1], dataC[:,2], marker='o', color='g')
-    ax.scatter(dataC2[:, 0], dataC2[:, 1], dataC2[:, 2], marker='o', color='b')
-    ax.scatter(dataE[:, 0], dataE[:, 1], dataE[:, 2], marker='o', color='r')
+    # ax.scatter(data_centered[:,0], data_centered[:,1], data_centered[:,2], marker='o', color='g')
+    ax.scatter(data_centered_regularized[:, 0], data_centered_regularized[:, 1],
+               data_centered_regularized[:, 2], marker='o', color='b')
+    ax.scatter(data_on_sphere[:, 0], data_on_sphere[:, 1],
+               data_on_sphere[:, 2], marker='o', color='r')
 
-    ellipsoid_plot([0, 0, 0], radii, evecs, ax=ax, plotAxes=True, cageColor='g')
-    ellipsoid_plot([0, 0, 0], [r, r, r], evecs, ax=ax, plotAxes=True, cageColor='orange')
+    ellipsoid_plot([0, 0, 0], radii, evecs, ax=ax, plot_axes=True, cage_color='g')
+    ellipsoid_plot([0, 0, 0], [r, r, r], evecs, ax=ax, plot_axes=True, cage_color='orange')
 
     #ax.plot([r],[0],[0],color='r',marker='o')
     #ax.plot([radii[0]],[0],[0],color='b',marker='o')
