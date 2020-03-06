@@ -7,7 +7,7 @@ if __name__ == '__main__':
     data = np.loadtxt("mag_out.txt")
     # data2 = data_regularize(data)
 
-    center, evecs, radii = ellipsoid_fit(data)
+    center, evecs, radii, v = ellipsoid_fit(data)
 
     a, b, c = radii
     r = (a * b * c) ** (1. / 3.)
@@ -20,6 +20,8 @@ if __name__ == '__main__':
     print('evecs: ', evecs)
     print('transformation:')
     print(transformation)
+    print('Coefficients:')
+    print(v)
     
     np.savetxt('magcal_ellipsoid.txt', np.vstack((center.T, transformation)))
 

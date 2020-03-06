@@ -145,5 +145,5 @@ def ellipsoid_fit(X):
     radii = np.sqrt(1. / np.abs(evals))
     radii *= np.sign(evals)
 
-    return center, evecs, radii
+    return center, evecs, radii, v
 
