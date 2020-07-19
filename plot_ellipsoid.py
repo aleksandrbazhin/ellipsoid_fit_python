@@ -26,10 +26,10 @@ if __name__=='__main__':
     ax = fig.add_subplot(111, projection='3d')
     
     #hack  for equal axes
-    ax.set_aspect('equal')
-    for direction in (-1, 1):
-        for point in np.diag(direction * np.max(data) * np.array([1, 1, 1])):
-            ax.plot([point[0]], [point[1]], [point[2]], 'w')
+    # ax.set_aspect('equal')
+    # for direction in (-1, 1):
+    #     for point in np.diag(direction * np.max(data) * np.array([1, 1, 1])):
+    #         ax.plot([point[0]], [point[1]], [point[2]], 'w')
             
     ax.scatter(data_centered[:,0], data_centered[:,1], data_centered[:,2], marker='o', color='g')
     # ax.scatter(data_centered_regularized[:, 0], data_centered_regularized[:, 1],
