@@ -9,7 +9,7 @@ if __name__=='__main__':
     data = np.loadtxt("mag_out.txt")
     data2 = data_regularize(data, divs=8)
 
-    center, evecs, radii = ellipsoid_fit(data2)
+    center, evecs, radii, v = ellipsoid_fit(data2)
 
     data_centered = data - center.T
     data_centered_regularized = data2 - center.T
