@@ -21,9 +21,9 @@ three rows are ellipsoid axes.
 
 Requirements are:
 - numpy
-- matplotlib for plotting
+- matplotlib for plotting (min version 3.3.0)
 
 Update: for close version to Matlab look here 
 https://github.com/marksemple/pyEllipsoid_Fit
 
-Update 2: Matplotlib from version 3 does not support equal axis, so spere plot may appear as not a sphere. If you still want a sphere remain a sphere on a plot, look into issue #10 (basically downgrade matplotlib and uncomment 3 lines at plot_ellipsoid.py).
+Update 2: Matplotlib from version 3 does not support equal axis, so spere plot may appear as not a sphere. But since matplotlib version 3.3.0 it's possible to set the aspect of an axes box directly via function set_box_aspect.
