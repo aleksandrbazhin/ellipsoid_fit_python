@@ -4,8 +4,21 @@ from mpl_toolkits.mplot3d import Axes3D
 from ellipsoid_fit import ellipsoid_fit, ellipsoid_plot, data_regularize
 
 
-if __name__=='__main__':
+def set_axes_equal(ax: plt.Axes):
+    ax.set_box_aspect([1,1,1])
+    limits = np.array([
+        ax.get_xlim3d(),
+        ax.get_ylim3d(),
+        ax.get_zlim3d(),
+    ])
+    x, y, z = np.mean(limits, axis=1)
+    radius = 0.5 * np.max(np.abs(limits[:, 1] - limits[:, 0]))
+    ax.set_xlim3d([x - radius, x + radius])
+    ax.set_ylim3d([y - radius, y + radius])
+    ax.set_zlim3d([z - radius, z + radius])
 
+
+if __name__=='__main__':
     data = np.loadtxt("mag_out.txt")
     data2 = data_regularize(data, divs=8)
 
@@ -25,8 +38,6 @@ if __name__=='__main__':
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
     
-    #hack  for equal axes
-    # ax.set_aspect('equal')
     # for direction in (-1, 1):
     #     for point in np.diag(direction * np.max(data) * np.array([1, 1, 1])):
     #         ax.plot([point[0]], [point[1]], [point[2]], 'w')
@@ -42,7 +53,8 @@ if __name__=='__main__':
 
     #ax.plot([r],[0],[0],color='r',marker='o')
     #ax.plot([radii[0]],[0],[0],color='b',marker='o')
-
+    
+    set_axes_equal(ax)
     plt.show()
 
 
